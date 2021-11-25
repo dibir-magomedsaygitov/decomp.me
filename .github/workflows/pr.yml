@@ -13,3 +13,14 @@ jobs:
         sudo dpkg --add-architecture i386
         sudo apt-get update
 
+    - name: Install dependencies
+      run: |-
+        sudo apt install \
+        binutils-mips-linux-gnu \
+        libprotobuf-dev \
+        libnl-route-3-dev \
+        protobuf-compiler \
+        wine \
+        mesa-va-drivers- \
+        libosmesa6- \
+        mesa-vdpau-drivers-
