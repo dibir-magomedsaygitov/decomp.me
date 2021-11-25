@@ -1,13 +1,14 @@
 name: PR
-on:[push]
+on:
+  push:
 
 jobs:
   backend_test:
     name: backend tests
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
     - name: Add i386 architecture
-      uses: actions/checkout@v2
       run: |-
         sudo dpkg --add-architecture i386
         sudo apt-get update
