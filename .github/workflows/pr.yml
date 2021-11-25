@@ -6,9 +6,9 @@ jobs:
     name: backend tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Add i386 architecture
-        run: |-
-          sudo dpkg --add-architecture i386
-          sudo apt-get update
+    - name: Add i386 architecture
+      uses: actions/checkout@v2
+      run: |-
+        sudo dpkg --add-architecture i386
+        sudo apt-get update
 
