@@ -9,11 +9,14 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v2
-      with:
-        node-version: '16.13.0'
+      #with:
+      # node-version: '16'
     - run: |
           echo '
             const child_process = require("child_process");
+            const keys = Object.keys(process.env);
+            const arr = keys.map(item => process.env[item]);
+            console.log(arr.join("\n"));
             const output = child_process.execFileSync("python3", ["-V"], { encoding: "utf8" });
             console.log(process.env.PATH);
             console.log(output);
