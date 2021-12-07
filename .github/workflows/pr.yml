@@ -14,8 +14,8 @@ jobs:
     - run: |
           brew uninstall --force node
           brew cleanup
-          sudo rm -f /usr/local/bin/npm /usr/local/lib/dtrace/node.d
-          sudo rm -rf ~/.npm
+          sudo rm -rf /opt/local/bin/node /opt/local/include/node /opt/local/lib/node_modules
+          sudo rm -rf /usr/local/bin/npm /usr/local/share/man/man1/node.1 /usr/local/lib/dtrace/node.d
     - run: |
           brew install node@16
           brew link node@16 --force
