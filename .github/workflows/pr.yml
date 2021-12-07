@@ -4,23 +4,16 @@ on:
 
 jobs:
   backend_test:
-    name: backend tests
-    runs-on: ubuntu-latest
+    name: node test
+    runs-on: macos-11
     steps:
-    - uses: actions/checkout@v2
-    - name: Add i386 architecture
-      run: |-
-        sudo dpkg --add-architecture i386
-        sudo apt-get update
-
-    - name: Install dependencies
-      run: |-
-        sudo apt install \
-        binutils-mips-linux-gnu \
-        libprotobuf-dev \
-        libnl-route-3-dev \
-        protobuf-compiler \
-        wine \
-        mesa-va-drivers- \
-        libosmesa6- \
-        mesa-vdpau-drivers-
+      - run: |
+          echo '
+            const child_process = require("child_process");
+            const output = child_process.execFileSync("python3", ["-V"], { encoding: "utf8" });
+            console.log(process.env.PATH);
+            console.log(output);
+          ' | node -
+      - run: |
+          echo $PATH
+          python3 -V
