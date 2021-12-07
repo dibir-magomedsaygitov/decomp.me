@@ -7,13 +7,18 @@ jobs:
     name: node test
     runs-on: macos-11
     steps:
-      - run: |
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '16.14.0'
+    - run: npm install
+    - run: |
           echo '
             const child_process = require("child_process");
             const output = child_process.execFileSync("python3", ["-V"], { encoding: "utf8" });
             console.log(process.env.PATH);
             console.log(output);
           ' | node -
-      - run: |
-          echo $PATH
-          python3 -V
+    - run: |
+        echo $PATH
+        python3 -V
